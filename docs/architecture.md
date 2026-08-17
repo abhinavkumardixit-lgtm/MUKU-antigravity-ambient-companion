@@ -2,20 +2,20 @@
 
 ## Overview
 MUKU provides an ambient, decoupled Human-in-the-Loop (HITL) mediation pipeline between an autonomous agent runtime and a composited OS overlay daemon.
-                          +-------------------+      HTTP POST /intercept      +----------------------+
-                          |                   | ---------------------------->  |                      |
-                          |  Agent Runtime    |                                |  FastAPI IPC Bridge  |
-                          |  (Hook Function)  | <----------------------------  |  (127.0.0.1:8765)    |
-                          +-------------------+       {"authorized": bool}     +----------------------+
-                                                                                            ^
-                                                                                            | WebSocket
-                                                                                            v
-                                                                                 +----------------------+
-                                                                                 |                      |
-                                                                                 |   PyQt6 Overlay UI   |
-                                                                                 |   (Desktop Mascot)   |
-                                                                                 +----------------------+
----
+```text
++-------------------+      HTTP POST /intercept      +----------------------+
+|                   | ---------------------------->  |                      |
+|  Agent Runtime    |                                |  FastAPI IPC Bridge  |
+|  (Hook Function)  | <----------------------------  |  (127.0.0.1:8765)    |
++-------------------+       {"authorized": bool}     +----------------------+
+                                                                ^
+                                                                | WebSocket
+                                                                v
+                                                     +----------------------+
+                                                     |                      |
+                                                     |   PyQt6 Overlay UI   |
+                                                     |   (Desktop Mascot)   |
+                                                     +----------------------+
 
 ## 1. Asynchronous Request-Correlation Protocol
                                   Agent Shell                     IPC Bridge Server                     PyQt6 Overlay UI
